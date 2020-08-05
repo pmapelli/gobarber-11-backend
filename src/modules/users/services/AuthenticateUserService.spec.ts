@@ -46,13 +46,13 @@ describe('CreateUser', () => {
       fakeHashProvider,
     );
 
-    const user = await createUser.execute({
+    await createUser.execute({
       name: 'Jonh Doe',
       email: 'jonhdoe@email.com',
       password: 'senhaForte',
     });
 
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'jonhdoe@email.com',
         password: 'senhaErrada',
@@ -69,7 +69,7 @@ describe('CreateUser', () => {
       fakeHashProvider,
     );
 
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'jonhdoe@email.com',
         password: 'senhaForte',
