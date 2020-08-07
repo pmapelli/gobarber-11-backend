@@ -10,8 +10,13 @@ export default class UsersController {
 
     const user = await createUser.execute({ name, email, password });
 
-    delete user.password;
+    // delete user.password;
 
-    return response.json(user);
+    return response.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      created_at: user.created_at,
+    });
   }
 }
